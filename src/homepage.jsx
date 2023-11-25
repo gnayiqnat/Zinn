@@ -30,7 +30,7 @@ export default function Root() {
 					display: 'grid',
 					gridTemplateRows: '1fr 75px',
 					height: '100vh',
-					padding: '1rem'
+					padding: '40px 30px 0px 30px'
 				}}
 			>
 				<Grid item>
@@ -40,8 +40,6 @@ export default function Root() {
 						sx={{
 							flexDirection: 'columnReverse',
 							overflowY: 'scroll',
-							overflowX: 'hidden',
-							maxHeight: '83vh',
 						}}
 					>
 						{messages.map((e, i) => {
