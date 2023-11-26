@@ -29,7 +29,7 @@ export default function Root() {
 				sx={{
 					display: 'grid',
 					gridTemplateRows: '1fr 75px',
-					height: '95vh',
+					height: '97dvh',
 					overflow: 'hidden',
 				}}
 			>
@@ -53,9 +53,9 @@ export default function Root() {
 						}}
 					>
 						<ChatBox setMessages={setMessages} messages={messages} />
-					</Grid>{' '}
+					</Grid>
 				</Grid>
-			</Grid>{' '}
+			</Grid>
 		</>
 	);
 }
@@ -146,7 +146,6 @@ function ChatBox(props) {
 				message: chatboxInputValue,
 			};
 			props.setMessages([...props.messages, inputMessage]);
-			document.getElementById('scrollToBottom').scrollIntoView();
 			setChatboxInputValue('');
 		} else {
 			window.alert('Please enter something');
