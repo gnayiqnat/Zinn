@@ -29,32 +29,33 @@ export default function Root() {
 				sx={{
 					display: 'grid',
 					gridTemplateRows: '1fr 75px',
-					height: '100vh',
-					padding: '40px 30px 0px 30px'
+					height: '95vh',
+					overflow: 'hidden',
 				}}
 			>
+				<Grid item sx={{ overflow: 'scroll' }}>
+					{messages.map((e, i) => {
+						if (e.type === 'sender') {
+							return <Sender text={e.message} />;
+						} else if (e.type === 'receiver')
+							return <Receiver text={e.message} />;
+					})}
+					<Box id='scrollToBottom' />
+				</Grid>
 				<Grid item>
 					<Grid
 						container
-						id='foo'
 						sx={{
-							flexDirection: 'columnReverse',
-							overflowY: 'scroll',
+							width: '98%',
+							height: '100%',
+							alignItems: 'center',
+							justifyContent: 'center',
 						}}
 					>
-						{messages.map((e, i) => {
-							if (e.type === 'sender') {
-								return <Sender text={e.message} />;
-							} else if (e.type === 'receiver')
-								return <Receiver text={e.message} />;
-						})}
-						<Box id='scrollToBottom' />
-					</Grid>
+						<ChatBox setMessages={setMessages} messages={messages} />
+					</Grid>{' '}
 				</Grid>
-				<Grid item sx={{width: '100%' }}>
-					<ChatBox setMessages={setMessages} messages={messages} />
-				</Grid>{' '}
-			</Grid>
+			</Grid>{' '}
 		</>
 	);
 }
@@ -168,6 +169,7 @@ function ChatBox(props) {
 						setChatboxInputValue(e.target.value);
 					}}
 					value={chatboxInputValue}
+					autoFocus
 					placeholder='Type a message'
 					multiline
 					fullWidth
