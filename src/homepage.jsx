@@ -172,6 +172,9 @@ function ChatBox(props) {
 					placeholder='Type a message'
 					multiline
 					fullWidth
+					onKeyDownCapture={(e) => {
+						e.key === 'Enter' && (e.preventDefault(), pushValue());
+					}}
 					sx={{ padding: '10px 15px', borderRadius: '10px' }}
 				></OutlinedInput>
 			</FormControl>
